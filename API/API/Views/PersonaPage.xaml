@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ViewModels="clr-namespace:API.ViewModels"
+             x:Class="API.Views.PersonaPage">
+    <ContentPage.BindingContext>
+        <ViewModels:PersonaViewModels></ViewModels:PersonaViewModels>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+        <ScrollView>
+
+            <StackLayout>
+                <StackLayout>
+                    <Label Text="Id"/>
+                    <Entry Text="{Binding ID}"
+                           Keyboard="Numeric"/>
+                    <Label Text="Nombrea"/>
+                    <Entry Text="{Binding Nombres}"/>
+                    <Label Text="Apellidos"/>
+                    <Entry Text="{Binding Apellidos}"/>
+                    <Label Text="Año de nacimiento"/>
+                    <Entry Text="{Binding Anio}"
+                           Keyboard="Numeric"/>
+                    <Label Text="Celular"/>
+                    <Entry Text="{Binding Celular}"
+                           Keyboard="Telephone"/>
+                    <Label Text="Direccion"/>
+                    <Entry Text="{Binding Direccion}"/>
+                    <Button Command="{Binding CreateCommand}" Text="Ingresar"/>
+                    <Button Command="{Binding SearchCommand}" Text="Ver Personas"/>
+                </StackLayout>
+                <Frame HeightRequest="200" BorderColor="Black">
+                    <StackLayout>
+                        <ListView ItemsSource="{Binding PersonasList}">
+                            <ListView.Header>
+                                <StackLayout>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                            <ColumnDefinition Width="30"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Column="0" Text="Nombres"/>
+                                        <Label Grid.Column="1" Text="Apellidoss"/>
+                                        <Label Grid.Column="2" Text="Año de nacimiento"/>
+                                        <Label Grid.Column="3" Text="Celular"/>
+                                        <Label Grid.Column="4" Text="Direccion"/>
+                                    </Grid>
+                                </StackLayout>
+                            </ListView.Header>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="30"/>
+                                                <ColumnDefinition Width="30"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding Nombres}"/>
+                                            <Label Grid.Column="1" Text="{Binding Apellidos}"/>
+                                            <Label Grid.Column="2" Text="{Binding Anio}"/>
+                                            <Label Grid.Column="3" Text="{Binding Celular}"/>
+                                            <Label Grid.Column="4" Text="{Binding Direccion}"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
